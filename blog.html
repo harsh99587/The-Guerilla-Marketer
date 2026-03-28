@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog – The Guerilla Marketer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F172A;
+    --blue: #3B82F6;
+    --blue-light: #60A5FA;
+    --gray: #E2E8F0;
+    --green: #22C55E;
+    --muted: #94A3B8;
+    --white: #FFFFFF;
+    --card-bg: #1E293B;
+    --border: rgba(59,130,246,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ─── TOP NAVBAR ─── */
+  .topnav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 60px;
+    background: rgba(15,23,42,0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .topnav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .topnav-logo span { color: var(--blue); }
+
+  .topnav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .topnav-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 2px;
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .topnav-links a:hover,
+  .topnav-links a.active {
+    color: var(--white);
+    background: rgba(59,130,246,0.12);
+  }
+
+  .topnav-links a.active { color: var(--blue-light); }
+
+  .topnav-cta {
+    background: var(--blue) !important;
+    color: var(--white) !important;
+    padding: 7px 16px !important;
+  }
+
+  .topnav-cta:hover { background: var(--blue-light) !important; }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--muted);
+    transition: all 0.3s;
+  }
+
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 820px) {
+    .topnav-links {
+      display: none;
+      position: absolute;
+      top: 60px; left: 0; right: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      background: rgba(15,23,42,0.98);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 5% 20px;
+      gap: 2px;
+    }
+    .topnav-links.open { display: flex; }
+    .topnav-links a { width: 100%; padding: 10px 8px; font-size: 11px; }
+    .nav-hamburger { display: flex; }
+  }
+
+  /* ─── HERO ─── */
+  .blog-hero {
+    padding: 140px 10% 80px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .blog-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .hero-deco {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(120px, 18vw, 260px);
+    color: rgba(59,130,246,0.06);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -4px;
+  }
+
+  .blog-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--blue);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    animation: fadeUp 0.7s 0.1s both;
+  }
+
+  .blog-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 8vw, 100px);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    animation: fadeUp 0.7s 0.2s both;
+    margin-bottom: 24px;
+  }
+
+  .blog-title span { color: var(--blue); }
+
+  .blog-desc {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.7;
+    animation: fadeUp 0.7s 0.3s both;
+  }
+
+  /* ─── FILTER TABS ─── */
+  .filter-row {
+    padding: 32px 10% 0;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 7px 16px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    background: rgba(59,130,246,0.12);
+    border-color: var(--blue);
+    color: var(--white);
+  }
+
+  /* ─── BLOG GRID ─── */
+  .blog-grid {
+    padding: 48px 10% 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+  }
+
+  /* Featured card (first one, spans 2 cols) */
+  .blog-card:first-child {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .blog-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.6s forwards;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(59,130,246,0.5);
+  }
+
+  .blog-card:first-child:hover { transform: translateY(-4px); }
+
+  /* Stagger animations */
+  .blog-card:nth-child(1) { animation-delay: 0.1s; }
+  .blog-card:nth-child(2) { animation-delay: 0.2s; }
+  .blog-card:nth-child(3) { animation-delay: 0.25s; }
+  .blog-card:nth-child(4) { animation-delay: 0.3s; }
+  .blog-card:nth-child(5) { animation-delay: 0.35s; }
+
+  .card-thumb {
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .blog-card:first-child .card-thumb {
+    min-height: 320px;
+  }
+
+  .card-thumb-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(60px, 8vw, 110px);
+    color: rgba(59,130,246,0.12);
+    letter-spacing: -2px;
+    user-select: none;
+    line-height: 1;
+  }
+
+  .card-thumb-accent {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--blue);
+  }
+
+  .card-category {
+    position: absolute;
+    top: 16px; left: 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: rgba(59,130,246,0.2);
+    color: var(--blue-light);
+    padding: 4px 10px;
+    border-radius: 2px;
+    border: 1px solid rgba(59,130,246,0.3);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: 16px; right: 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: rgba(34,197,94,0.15);
+    color: var(--green);
+    padding: 4px 10px;
+    border-radius: 2px;
+    border: 1px solid rgba(34,197,94,0.3);
+  }
+
+  .card-body {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .blog-card:first-child .card-body {
+    padding: 40px;
+    justify-content: center;
+  }
+
+  .card-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .card-meta span { color: var(--border); }
+
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 14px;
+    transition: color 0.2s;
+  }
+
+  .blog-card:first-child .card-title {
+    font-size: clamp(32px, 3.5vw, 44px);
+  }
+
+  .blog-card:hover .card-title { color: var(--blue-light); }
+
+  .card-excerpt {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    flex: 1;
+    margin-bottom: 24px;
+  }
+
+  .card-read {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.2s;
+  }
+
+  .blog-card:hover .card-read { gap: 14px; }
+
+  .card-read::after {
+    content: '→';
+    transition: transform 0.2s;
+  }
+
+  /* ─── NEWSLETTER STRIP ─── */
+  .newsletter {
+    margin: 0 10% 100px;
+    padding: 48px 48px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .newsletter::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--blue);
+  }
+
+  .newsletter-text h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .newsletter-text p {
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 360px;
+    line-height: 1.6;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .newsletter-form input {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    padding: 12px 20px;
+    border-radius: 2px;
+    width: 260px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .newsletter-form input:focus { border-color: var(--blue); }
+  .newsletter-form input::placeholder { color: var(--muted); }
+
+  .newsletter-form button {
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .newsletter-form button:hover { background: var(--blue-light); }
+
+  @media (max-width: 820px) {
+    .newsletter { flex-direction: column; margin: 0 5% 60px; padding: 32px 24px; }
+    .newsletter-form { flex-direction: column; width: 100%; }
+    .newsletter-form input { width: 100%; }
+    .blog-grid { padding: 32px 5% 60px; grid-template-columns: 1fr; }
+    .blog-card:first-child { grid-column: 1; display: flex; flex-direction: column; }
+    .blog-hero { padding: 120px 5% 60px; }
+    .filter-row { padding: 24px 5% 0; }
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── FOOTER ─── */
+  .blog-footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .footer-logo span { color: var(--blue); }
+
+  .footer-copy {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 600px) {
+    .blog-footer { flex-direction: column; text-align: center; padding: 24px 5%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="topnav" id="topnav">
+  <a class="topnav-logo" href="index.html">The Guerilla <span>Marketer</span></a>
+  <div class="topnav-links" id="topnavLinks">
+    <a href="index.html">Home</a>
+    <a href="index.html#s2">Services</a>
+    <a href="index.html#s6">Work</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="index.html#s10" class="topnav-cta">Get a Free Audit</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="blog-hero">
+  <div class="hero-deco">BLOG</div>
+  <p class="blog-eyebrow">Insights & Strategy</p>
+  <h1 class="blog-title">Marketing<br>Intelligence.<br><span>No Fluff.</span></h1>
+  <p class="blog-desc">Tactics, frameworks, and honest takes on what's actually working in digital marketing for Indian D2C and retail brands.</p>
+</header>
+
+<!-- ── FILTER TABS ── -->
+<div class="filter-row">
+  <button class="filter-btn active" onclick="filterPosts('all', this)">All Posts</button>
+  <button class="filter-btn" onclick="filterPosts('performance', this)">Performance Marketing</button>
+  <button class="filter-btn" onclick="filterPosts('brand', this)">Brand Strategy</button>
+  <button class="filter-btn" onclick="filterPosts('social', this)">Social Media</button>
+  <button class="filter-btn" onclick="filterPosts('d2c', this)">D2C Growth</button>
+</div>
+
+<!-- ── BLOG GRID ── -->
+<main class="blog-grid" id="blogGrid">
+
+  <!-- POST 1 – FEATURED -->
+  <a href="posts/post-1.html" class="blog-card" data-category="performance">
+    <div class="card-thumb">
+      <div class="card-thumb-text">ROAS</div>
+      <div class="card-category">Performance Marketing</div>
+      <div class="featured-badge">Featured</div>
+      <div class="card-thumb-accent"></div>
+    </div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span>June 2025</span>
+        <span>·</span>
+        <span>8 min read</span>
+      </div>
+      <h2 class="card-title">Why Your Meta Ads ROAS Is a Lie — And What to Track Instead</h2>
+      <p class="card-excerpt">Most D2C brands are optimising for the wrong number. Reported ROAS flatters your performance, hides your real cost, and causes you to scale the wrong campaigns. Here's the metric framework that actually maps to profit.</p>
+      <div class="card-read">Read Article</div>
+    </div>
+  </a>
+
+  <!-- POST 2 -->
+  <a href="posts/post-2.html" class="blog-card" data-category="brand">
+    <div class="card-thumb" style="background: linear-gradient(135deg, #1a2540 0%, #0F172A 100%);">
+      <div class="card-thumb-text">BRAND</div>
+      <div class="card-category">Brand Strategy</div>
+      <div class="card-thumb-accent" style="background: var(--green);"></div>
+    </div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span>May 2025</span>
+        <span>·</span>
+        <span>6 min read</span>
+      </div>
+      <h2 class="card-title">Performance vs Brand: The False War Killing Indian D2C Companies</h2>
+      <p class="card-excerpt">Brands that spend only on performance ads eventually hit a ceiling. Brands that only invest in brand never convert. The winners have figured out how to run both — and when.</p>
+      <div class="card-read">Read Article</div>
+    </div>
+  </a>
+
+  <!-- POST 3 -->
+  <a href="posts/post-3.html" class="blog-card" data-category="social">
+    <div class="card-thumb" style="background: linear-gradient(135deg, #1a1a2e 0%, #0F172A 100%);">
+      <div class="card-thumb-text">IGM</div>
+      <div class="card-category">Social Media</div>
+      <div class="card-thumb-accent" style="background: #a855f7;"></div>
+    </div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span>May 2025</span>
+        <span>·</span>
+        <span>5 min read</span>
+      </div>
+      <h2 class="card-title">The Instagram Growth Playbook That Actually Works in 2025</h2>
+      <p class="card-excerpt">Forget posting daily and praying. Here's the content architecture, posting cadence, and engagement strategy that took three of our clients from under 5K to 50K+ followers in under 6 months.</p>
+      <div class="card-read">Read Article</div>
+    </div>
+  </a>
+
+  <!-- POST 4 -->
+  <a href="posts/post-4.html" class="blog-card" data-category="d2c">
+    <div class="card-thumb" style="background: linear-gradient(135deg, #1e2a1e 0%, #0F172A 100%);">
+      <div class="card-thumb-text">D2C</div>
+      <div class="card-category">D2C Growth</div>
+      <div class="card-thumb-accent" style="background: var(--green);"></div>
+    </div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span>April 2025</span>
+        <span>·</span>
+        <span>7 min read</span>
+      </div>
+      <h2 class="card-title">How to Scale a D2C Brand from ₹10L to ₹1Cr Monthly Revenue</h2>
+      <p class="card-excerpt">The channel mix, marketing budget split, and operational readiness that separates ₹10L/month brands from ₹1Cr/month brands. A practical breakdown from our work on the ground.</p>
+      <div class="card-read">Read Article</div>
+    </div>
+  </a>
+
+  <!-- POST 5 -->
+  <a href="posts/post-5.html" class="blog-card" data-category="performance">
+    <div class="card-thumb" style="background: linear-gradient(135deg, #1a1520 0%, #0F172A 100%);">
+      <div class="card-thumb-text">CAC</div>
+      <div class="card-category">Performance Marketing</div>
+      <div class="card-thumb-accent" style="background: #f59e0b;"></div>
+    </div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span>April 2025</span>
+        <span>·</span>
+        <span>6 min read</span>
+      </div>
+      <h2 class="card-title">CAC Is Vanity. Payback Period Is Sanity. Here's Why.</h2>
+      <p class="card-excerpt">Most founders obsess over Customer Acquisition Cost and miss the number that actually matters for sustainable growth: your payback period. We break down how to calculate it, benchmark it, and use it to make smarter channel decisions.</p>
+      <div class="card-read">Read Article</div>
+    </div>
+  </a>
+
+</main>
+
+<!-- ── NEWSLETTER ── -->
+<section class="newsletter">
+  <div class="newsletter-text">
+    <h3>Get the Weekly Brief</h3>
+    <p>One email every Friday. Marketing insights, case studies, and what's working right now — no spam, no fluff.</p>
+  </div>
+  <div class="newsletter-form">
+    <input type="email" placeholder="your@email.com" id="emailInput">
+    <button onclick="subscribe()">Subscribe →</button>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="blog-footer">
+  <a class="footer-logo" href="index.html">The Guerilla <span>Marketer</span></a>
+  <p class="footer-copy">© 2025 The Guerilla Marketer · Delhi, India</p>
+</footer>
+
+<script>
+  // Hamburger
+  document.getElementById('hamburger').addEventListener('click', function () {
+    document.getElementById('topnavLinks').classList.toggle('open');
+    this.classList.toggle('open');
+  });
+
+  // Filter
+  function filterPosts(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.blog-card').forEach(card => {
+      if (category === 'all' || card.dataset.category === category) {
+        card.style.display = '';
+        // reset first-child special layout
+        if (card === document.querySelector('.blog-card:first-child')) {
+          if (category === 'all') {
+            card.style.gridColumn = '1 / -1';
+            card.style.display = 'grid';
+          } else {
+            card.style.gridColumn = '';
+            card.style.display = 'flex';
+          }
+        }
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Subscribe
+  function subscribe() {
+    const input = document.getElementById('emailInput');
+    if (input.value && input.value.includes('@')) {
+      input.value = '';
+      input.placeholder = '✓ You\'re on the list!';
+      input.style.borderColor = 'var(--green)';
+      setTimeout(() => {
+        input.placeholder = 'your@email.com';
+        input.style.borderColor = '';
+      }, 3000);
+    }
+  }
+</script>
+</body>
+</html>
