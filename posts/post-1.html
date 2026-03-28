@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Your Meta Ads ROAS Is a Lie – The Guerilla Marketer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --navy:#0F172A;--blue:#3B82F6;--blue-light:#60A5FA;--gray:#E2E8F0;--green:#22C55E;--muted:#94A3B8;--white:#FFFFFF;--card-bg:#1E293B;--border:rgba(59,130,246,0.2); }
+  *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
+  .topnav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:60px;background:rgba(15,23,42,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+  .topnav-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1.5px;color:var(--white);text-decoration:none;}
+  .topnav-logo span{color:var(--blue);}
+  .topnav-links{display:flex;align-items:center;gap:4px;}
+  .topnav-links a{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:2px;transition:color 0.2s,background 0.2s;}
+  .topnav-links a:hover{color:var(--white);background:rgba(59,130,246,0.12);}
+  .topnav-links a.active{color:var(--blue-light);background:rgba(59,130,246,0.12);}
+  .topnav-cta{background:var(--blue)!important;color:var(--white)!important;padding:7px 16px!important;}
+  .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+  .nav-hamburger span{display:block;width:22px;height:2px;background:var(--muted);transition:all 0.3s;}
+  @media(max-width:820px){.topnav-links{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;align-items:flex-start;background:rgba(15,23,42,0.98);border-bottom:1px solid var(--border);padding:12px 5% 20px;gap:2px;}.topnav-links.open{display:flex;}.topnav-links a{width:100%;padding:10px 8px;font-size:11px;}.nav-hamburger{display:flex;}}
+  .post-wrap{max-width:760px;margin:0 auto;padding:120px 24px 100px;}
+  .breadcrumb{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:40px;display:flex;align-items:center;gap:10px;animation:fadeUp 0.5s both;}
+  .breadcrumb a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
+  .breadcrumb a:hover{color:var(--blue-light);}
+  .breadcrumb .sep{color:var(--border);}
+  .breadcrumb .current{color:var(--blue-light);}
+  .post-category{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:20px;animation:fadeUp 0.5s 0.05s both;}
+  .post-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,7vw,72px);line-height:0.95;letter-spacing:1px;margin-bottom:24px;animation:fadeUp 0.5s 0.1s both;}
+  .post-meta{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:1px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-bottom:32px;border-bottom:1px solid var(--border);margin-bottom:48px;animation:fadeUp 0.5s 0.15s both;}
+  .post-meta .dot{width:4px;height:4px;border-radius:50%;background:var(--border);}
+  .post-body{animation:fadeUp 0.6s 0.2s both;}
+  .post-body p{font-size:17px;line-height:1.8;color:#CBD5E1;margin-bottom:28px;}
+  .post-body h2{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:1px;color:var(--white);margin:56px 0 20px;padding-top:8px;border-top:1px solid var(--border);}
+  .post-body h3{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:600;color:var(--white);margin:36px 0 16px;}
+  .post-body strong{color:var(--white);font-weight:600;}
+  .post-body ul,.post-body ol{padding-left:24px;margin-bottom:28px;}
+  .post-body li{font-size:17px;line-height:1.8;color:#CBD5E1;margin-bottom:10px;}
+  .callout{background:var(--card-bg);border-left:3px solid var(--blue);padding:24px 28px;margin:40px 0;border-radius:0 4px 4px 0;}
+  .callout p{margin-bottom:0;color:var(--gray);font-size:16px;}
+  .stat-block{background:var(--card-bg);border:1px solid var(--border);border-radius:4px;padding:32px;margin:40px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:24px;text-align:center;}
+  .stat-item .stat-num{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--blue);line-height:1;letter-spacing:1px;}
+  .stat-item .stat-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:8px;}
+  .post-cta{margin-top:72px;padding:48px;background:var(--card-bg);border:1px solid var(--border);border-radius:4px;text-align:center;position:relative;overflow:hidden;}
+  .post-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--blue);}
+  .post-cta h3{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:1px;margin-bottom:12px;}
+  .post-cta p{font-size:15px;color:var(--muted);margin-bottom:28px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.6;}
+  .post-cta a{display:inline-block;background:var(--blue);color:var(--white);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;border-radius:2px;text-decoration:none;transition:background 0.2s;}
+  .post-cta a:hover{background:var(--blue-light);}
+  .back-link{display:inline-flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;margin-top:64px;transition:color 0.2s,gap 0.2s;}
+  .back-link:hover{color:var(--blue-light);gap:16px;}
+  .back-link::before{content:'←';}
+  .post-footer{border-top:1px solid var(--border);padding:28px 5%;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1.5px;color:var(--muted);text-decoration:none;}
+  .footer-logo span{color:var(--blue);}
+  .footer-copy{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:600px){.post-wrap{padding:110px 20px 80px;}.stat-block{grid-template-columns:repeat(2,1fr);}.post-cta{padding:32px 24px;}.post-footer{flex-direction:column;text-align:center;}}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a class="topnav-logo" href="../index.html">The Guerilla <span>Marketer</span></a>
+  <div class="topnav-links" id="topnavLinks">
+    <a href="../index.html">Home</a>
+    <a href="../index.html#s2">Services</a>
+    <a href="../index.html#s6">Work</a>
+    <a href="../blog.html" class="active">Blog</a>
+    <a href="../index.html#s10" class="topnav-cta">Get a Free Audit</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="post-wrap">
+
+  <div class="breadcrumb">
+    <a href="../blog.html">Blog</a>
+    <span class="sep">→</span>
+    <span class="current">Performance Marketing</span>
+  </div>
+
+  <p class="post-category">Performance Marketing</p>
+  <h1 class="post-title">Why Your Meta Ads ROAS Is a Lie — And What to Track Instead</h1>
+  <div class="post-meta">
+    <span>June 2025</span>
+    <div class="dot"></div>
+    <span>8 min read</span>
+    <div class="dot"></div>
+    <span>By The Guerilla Marketer</span>
+  </div>
+
+  <div class="post-body">
+
+    <p>Your Meta Ads dashboard says 4.2x ROAS. Your finance team says margins are getting squeezed. Both are right — and that's exactly the problem. The ROAS number Meta shows you is not the number your business actually runs on.</p>
+
+    <p>We've audited dozens of Indian D2C brand accounts over the past two years. The single most common pattern: brands scaling campaigns confidently off reported ROAS, while their actual profitability is quietly bleeding out. Here's why — and what to watch instead.</p>
+
+    <h2>What Meta's ROAS Actually Measures</h2>
+
+    <p>Meta calculates ROAS as <strong>revenue attributed to ads ÷ ad spend</strong>. Simple enough. The problem is in the word "attributed." Meta's attribution model — by default a 7-day click, 1-day view window — captures purchases that may have happened anyway. It counts organic buyers who happened to see an ad. It takes credit for influencer-driven conversions. It double-counts with Google, email, and WhatsApp.</p>
+
+    <p>In short: Meta is not an unbiased reporter of its own performance. It is an interested party telling you its own story. And the story is almost always flattering.</p>
+
+    <div class="callout">
+      <p>💡 In our experience, actual blended ROAS (total revenue ÷ total ad spend across all channels) is typically 30–50% lower than what Meta's dashboard reports. That gap is real money you are incorrectly attributing to paid ads.</p>
+    </div>
+
+    <h2>The Three Numbers That Actually Matter</h2>
+
+    <h3>1. MER — Marketing Efficiency Ratio</h3>
+
+    <p>MER = Total Revenue ÷ Total Marketing Spend. No attribution games. No platform bias. Just the honest ratio of how many rupees you got back for every rupee you put into marketing as a whole. This is the number your CFO should be looking at.</p>
+
+    <p>A healthy MER for a scaling D2C brand in India is typically between 3x and 5x, depending on category and AOV. If your MER is below 2.5x, you have a real problem regardless of what Meta's dashboard is telling you.</p>
+
+    <h3>2. nCAC — New Customer Acquisition Cost</h3>
+
+    <p>Not total CAC. New customer CAC. Separate your ad spend and revenue by new vs. returning customers. Most platforms will blend these together and show you a blended CAC that looks healthy — because your existing customers are cheap to re-activate. Your actual cost to acquire a net-new customer is often 2–3x higher than the blended number suggests.</p>
+
+    <h3>3. Contribution Margin Per Order</h3>
+
+    <p>Revenue minus COGS minus shipping minus payment gateway fees minus returns minus ad spend attributable to that order. This is the real number. Everything else is noise. If this number is positive and growing, you're building something. If it's negative or shrinking, no ROAS figure saves you.</p>
+
+    <div class="stat-block">
+      <div class="stat-item">
+        <div class="stat-num">40%</div>
+        <div class="stat-label">Avg ROAS Overreporting by Meta</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3x</div>
+        <div class="stat-label">Higher nCAC vs Blended CAC</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">₹0</div>
+        <div class="stat-label">Value of ROAS if CM is Negative</div>
+      </div>
+    </div>
+
+    <h2>How to Fix Your Measurement Setup</h2>
+
+    <p>You don't need to throw away Meta's data. You need to layer it correctly alongside ground-truth data from your own systems.</p>
+
+    <ul>
+      <li><strong>Install server-side tracking (Meta CAPI)</strong> — reduces discrepancy between Meta-reported events and actual purchases, especially post iOS 14.</li>
+      <li><strong>Set up a daily MER tracker</strong> — pull total revenue from your Shopify/website backend and total ad spend from all platforms. Calculate MER every day. This becomes your north star.</li>
+      <li><strong>Segment new vs. returning in your ad account</strong> — use customer lists to separate prospecting campaigns from retention/retargeting. Report nCAC and retention CAC separately.</li>
+      <li><strong>Tag your orders with UTM parameters religiously</strong> — so you can see which campaigns drove first-touch vs. last-touch at the order level in your analytics.</li>
+      <li><strong>Run periodic blackout tests</strong> — pause Meta ads for a week in a small geography. Watch what happens to organic revenue. The gap tells you true incrementality.</li>
+    </ul>
+
+    <h2>The Bottom Line</h2>
+
+    <p>ROAS is a useful signal, not a final verdict. Use it to compare ad sets against each other within Meta. Use MER, nCAC, and contribution margin to judge whether your entire marketing engine is actually profitable. The brands that get this right are the ones that scale without running out of cash.</p>
+
+    <p>If you've been running on Meta's reported ROAS alone, pull up your MER for the last 90 days. That number will tell you the truth your dashboard has been hiding.</p>
+
+  </div>
+
+  <div class="post-cta">
+    <h3>Want Us to Audit Your Ad Account?</h3>
+    <p>We'll tell you exactly where your attribution is broken and what your real MER looks like — for free.</p>
+    <a href="../index.html#s10">Get Your Free Audit →</a>
+  </div>
+
+  <a href="../blog.html" class="back-link">Back to All Articles</a>
+
+</div>
+
+<footer class="post-footer">
+  <a class="footer-logo" href="../index.html">The Guerilla <span>Marketer</span></a>
+  <p class="footer-copy">© 2025 The Guerilla Marketer · Delhi, India</p>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', function () {
+    document.getElementById('topnavLinks').classList.toggle('open');
+    this.classList.toggle('open');
+  });
+</script>
+</body>
+</html>
