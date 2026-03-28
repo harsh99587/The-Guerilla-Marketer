@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Scale a D2C Brand from ₹10L to ₹1Cr Monthly – The Guerilla Marketer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0F172A;--blue:#3B82F6;--blue-light:#60A5FA;--gray:#E2E8F0;--green:#22C55E;--muted:#94A3B8;--white:#FFFFFF;--card-bg:#1E293B;--border:rgba(59,130,246,0.2);}
+  *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
+  .topnav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:60px;background:rgba(15,23,42,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+  .topnav-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1.5px;color:var(--white);text-decoration:none;}.topnav-logo span{color:var(--blue);}
+  .topnav-links{display:flex;align-items:center;gap:4px;}
+  .topnav-links a{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:2px;transition:color 0.2s,background 0.2s;}
+  .topnav-links a:hover{color:var(--white);background:rgba(59,130,246,0.12);}.topnav-links a.active{color:var(--blue-light);background:rgba(59,130,246,0.12);}
+  .topnav-cta{background:var(--blue)!important;color:var(--white)!important;padding:7px 16px!important;}
+  .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}.nav-hamburger span{display:block;width:22px;height:2px;background:var(--muted);transition:all 0.3s;}
+  @media(max-width:820px){.topnav-links{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;align-items:flex-start;background:rgba(15,23,42,0.98);border-bottom:1px solid var(--border);padding:12px 5% 20px;gap:2px;}.topnav-links.open{display:flex;}.topnav-links a{width:100%;padding:10px 8px;font-size:11px;}.nav-hamburger{display:flex;}}
+  .post-wrap{max-width:760px;margin:0 auto;padding:120px 24px 100px;}
+  .breadcrumb{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:40px;display:flex;align-items:center;gap:10px;animation:fadeUp 0.5s both;}
+  .breadcrumb a{color:var(--muted);text-decoration:none;transition:color 0.2s;}.breadcrumb a:hover{color:var(--blue-light);}.breadcrumb .sep{color:var(--border);}.breadcrumb .current{color:var(--blue-light);}
+  .post-category{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:20px;animation:fadeUp 0.5s 0.05s both;}
+  .post-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,7vw,72px);line-height:0.95;letter-spacing:1px;margin-bottom:24px;animation:fadeUp 0.5s 0.1s both;}
+  .post-meta{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:1px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-bottom:32px;border-bottom:1px solid var(--border);margin-bottom:48px;animation:fadeUp 0.5s 0.15s both;}
+  .post-meta .dot{width:4px;height:4px;border-radius:50%;background:var(--border);}
+  .post-body{animation:fadeUp 0.6s 0.2s both;}
+  .post-body p{font-size:17px;line-height:1.8;color:#CBD5E1;margin-bottom:28px;}
+  .post-body h2{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:1px;color:var(--white);margin:56px 0 20px;padding-top:8px;border-top:1px solid var(--border);}
+  .post-body h3{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:600;color:var(--white);margin:36px 0 16px;}
+  .post-body strong{color:var(--white);font-weight:600;}
+  .post-body ul,.post-body ol{padding-left:24px;margin-bottom:28px;}
+  .post-body li{font-size:17px;line-height:1.8;color:#CBD5E1;margin-bottom:10px;}
+  .callout{background:var(--card-bg);border-left:3px solid var(--green);padding:24px 28px;margin:40px 0;border-radius:0 4px 4px 0;}
+  .callout p{margin-bottom:0;color:var(--gray);font-size:16px;}
+  .stage-card{background:var(--card-bg);border:1px solid var(--border);border-radius:4px;padding:32px;margin:24px 0;position:relative;overflow:hidden;}
+  .stage-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--green);}
+  .stage-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
+  .stage-card h3{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;color:var(--white);margin-bottom:12px;}
+  .stage-card p{font-size:15px;color:var(--muted);line-height:1.7;margin:0;}
+  .post-cta{margin-top:72px;padding:48px;background:var(--card-bg);border:1px solid var(--border);border-radius:4px;text-align:center;position:relative;overflow:hidden;}
+  .post-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--blue);}
+  .post-cta h3{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:1px;margin-bottom:12px;}
+  .post-cta p{font-size:15px;color:var(--muted);margin-bottom:28px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.6;}
+  .post-cta a{display:inline-block;background:var(--blue);color:var(--white);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;border-radius:2px;text-decoration:none;transition:background 0.2s;}
+  .post-cta a:hover{background:var(--blue-light);}
+  .back-link{display:inline-flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;margin-top:64px;transition:color 0.2s,gap 0.2s;}
+  .back-link:hover{color:var(--blue-light);gap:16px;}.back-link::before{content:'←';}
+  .post-footer{border-top:1px solid var(--border);padding:28px 5%;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1.5px;color:var(--muted);text-decoration:none;}.footer-logo span{color:var(--blue);}
+  .footer-copy{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:600px){.post-wrap{padding:110px 20px 80px;}.post-cta{padding:32px 24px;}.post-footer{flex-direction:column;text-align:center;}}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-logo" href="../index.html">The Guerilla <span>Marketer</span></a>
+  <div class="topnav-links" id="topnavLinks">
+    <a href="../index.html">Home</a><a href="../index.html#s2">Services</a><a href="../index.html#s6">Work</a>
+    <a href="../blog.html" class="active">Blog</a>
+    <a href="../index.html#s10" class="topnav-cta">Get a Free Audit</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="post-wrap">
+  <div class="breadcrumb"><a href="../blog.html">Blog</a><span class="sep">→</span><span class="current">D2C Growth</span></div>
+  <p class="post-category">D2C Growth</p>
+  <h1 class="post-title">How to Scale a D2C Brand from ₹10L to ₹1Cr Monthly Revenue</h1>
+  <div class="post-meta">
+    <span>April 2025</span><div class="dot"></div>
+    <span>7 min read</span><div class="dot"></div>
+    <span>By The Guerilla Marketer</span>
+  </div>
+
+  <div class="post-body">
+    <p>₹10 lakh a month feels like traction. ₹1 crore a month feels like a business. The distance between the two is not 10x the effort — it is a fundamentally different operating model, channel mix, and marketing approach. Here's the honest breakdown of what needs to change at each stage.</p>
+
+    <h2>Why Most Brands Get Stuck at ₹20–30L</h2>
+
+    <p>The ₹10L to ₹30L range is the most crowded and dangerous zone in Indian D2C. You have enough revenue to feel like it's working, but not enough to build the systems that would let you scale safely. Most brands at this stage are running on founder hustle, a few good Meta campaigns, and word of mouth. The moment any one of those legs gives out, revenue stalls.</p>
+
+    <p>The three most common traps:</p>
+
+    <ul>
+      <li><strong>Single-channel dependence</strong> — 80%+ of revenue from Meta Ads. If CPMs spike or iOS blocks an audience, your business shrinks overnight.</li>
+      <li><strong>No retention engine</strong> — New customer acquisition cost keeps rising because you have no email/WhatsApp flow converting one-time buyers into repeat purchasers.</li>
+      <li><strong>Unit economics not validated</strong> — Gross margins look fine but contribution margin per order (after shipping, returns, and ad spend) is razor thin or negative.</li>
+    </ul>
+
+    <div class="callout">
+      <p>💡 Before scaling anything, calculate your true contribution margin per order. If it's below ₹150 per order, scaling will accelerate losses, not profits. Fix the economics first, then scale.</p>
+    </div>
+
+    <h2>The ₹10L to ₹50L Stage: Build the Engine</h2>
+
+    <div class="stage-card">
+      <div class="stage-label">Stage 1 · ₹10L–₹50L/month</div>
+      <h3>Nail One Channel. Build Two More.</h3>
+      <p>Your primary channel is probably Meta. Keep it. But build Google (Shopping + Search) as a second engine — it captures high-intent buyers who already know what they want. Start an email/WhatsApp retention flow in parallel. Even a basic 3-email post-purchase sequence can lift repeat purchase rate by 15–25% within 60 days.</p>
+    </div>
+
+    <p>At this stage your marketing budget should be roughly: 60% Meta, 25% Google, 15% retention (email/WhatsApp tools + content). Organic social is a bonus, not a budget line.</p>
+
+    <h3>Key Metrics to Track at This Stage</h3>
+    <ul>
+      <li>Contribution Margin per Order (target: positive and above ₹200)</li>
+      <li>New Customer CAC (separate from blended)</li>
+      <li>30-day repeat purchase rate (target: above 15% for consumables, above 8% for non-consumables)</li>
+      <li>MER — total revenue ÷ total marketing spend (target: above 3x)</li>
+    </ul>
+
+    <h2>The ₹50L to ₹1Cr Stage: Add the Multipliers</h2>
+
+    <div class="stage-card">
+      <div class="stage-label">Stage 2 · ₹50L–₹1Cr/month</div>
+      <h3>Brand + Performance Working Together.</h3>
+      <p>At ₹50L/month you have enough proof to start investing in brand. Not a brand film — a consistent content system. Three to five pieces of organic content weekly. A micro-influencer programme (8–12 creators). Founder presence on one platform. This brand layer reduces your CPMs on paid channels by 20–30% because warm audiences convert at a fraction of the cost of cold ones.</p>
+    </div>
+
+    <p>The channel mix at this stage: 50% Meta, 20% Google, 15% retention, 15% brand/influencer. You're also ready to explore marketplaces (Nykaa, Myntra, Blinkit depending on category) as a secondary distribution layer — not a primary one.</p>
+
+    <h3>What Operational Readiness You Need First</h3>
+    <ul>
+      <li>3PL or warehouse set up to handle 2–3x current order volume without breaking</li>
+      <li>Customer support process that resolves complaints within 24 hours (retention killer if broken)</li>
+      <li>Inventory forecasting that doesn't leave you out of stock on bestsellers during scaling</li>
+      <li>A creative production pipeline that can output 8–12 new ad creatives per month</li>
+    </ul>
+
+    <h2>The Number That Unlocks the Jump</h2>
+
+    <p>The single biggest unlock from ₹30L to ₹1Cr is almost always <strong>repeat purchase rate</strong>. Brands that get a customer to buy twice convert that customer into a profitable relationship. Brands that don't are on an acquisition treadmill — constantly spending to replace churned customers.</p>
+
+    <p>Focus your retention marketing obsessively on getting the second purchase within 45 days of the first. A discount isn't always the answer — often it's a well-timed educational email, a product recommendation based on first purchase, or a WhatsApp message when a consumable is likely running out.</p>
+
+    <p>₹1 crore a month is not a revenue milestone. It's an operational and strategic milestone. The brands that reach it have channel diversity, positive unit economics, a retention flywheel, and the systems to support growth. Get those right, and the revenue number follows.</p>
+  </div>
+
+  <div class="post-cta">
+    <h3>Stuck at a Revenue Plateau?</h3>
+    <p>We've helped brands break through the ₹20L, ₹50L, and ₹1Cr walls. Tell us where you're stuck and we'll show you what's blocking you.</p>
+    <a href="../index.html#s10">Book a Free Growth Audit →</a>
+  </div>
+
+  <a href="../blog.html" class="back-link">Back to All Articles</a>
+</div>
+
+<footer class="post-footer">
+  <a class="footer-logo" href="../index.html">The Guerilla <span>Marketer</span></a>
+  <p class="footer-copy">© 2025 The Guerilla Marketer · Delhi, India</p>
+</footer>
+<script>document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('topnavLinks').classList.toggle('open');this.classList.toggle('open');});</script>
+</body>
+</html>
