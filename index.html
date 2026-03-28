@@ -805,101 +805,6 @@
     color: var(--blue);
     font-size: 11px;
   }
-
-  /* ─────────────────────────────
-     SLIDE 9 – PRICING
-  ───────────────────────────── */
-  #s9 { background: var(--navy); }
-
-  .price-heading { font-size: clamp(48px, 6vw, 88px); margin-bottom: 16px; }
-  .price-sub {
-    font-size: 15px; color: var(--muted);
-    max-width: 480px; line-height: 1.7; margin-bottom: 52px;
-  }
-
-  .price-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    align-items: start;
-  }
-
-  .price-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    padding: 36px 28px;
-    position: relative;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-
-  .price-card:hover { border-color: var(--blue); transform: translateY(-4px); }
-
-  .price-card.featured {
-    border-color: var(--blue);
-    background: rgba(59,130,246,0.06);
-  }
-
-  .featured-badge {
-    position: absolute;
-    top: -14px; left: 50%; transform: translateX(-50%);
-    background: var(--blue);
-    color: var(--white);
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    padding: 4px 16px;
-    text-transform: uppercase;
-  }
-
-  .price-tier {
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .price-amount {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 56px;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .price-amount span {
-    font-size: 24px;
-    color: var(--muted);
-  }
-
-  .price-desc {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 28px;
-    line-height: 1.5;
-  }
-
-  .price-features {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .price-features li {
-    font-size: 13px;
-    color: var(--gray);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .check {
-    color: var(--green);
-    font-size: 14px;
-    flex-shrink: 0;
-  }
-
   /* ─────────────────────────────
      SLIDE 10 – CTA
   ───────────────────────────── */
@@ -1023,7 +928,6 @@
     <a data-target="s6">Results</a>
     <a data-target="s7">Why Us</a>
     <a data-target="s8">Strategy</a>
-    <a data-target="s9">Pricing</a>
     <a class="topnav-cta" data-target="s10">Free Audit →</a>
   </nav>
 
@@ -1042,7 +946,6 @@
   <div class="dot" data-index="5" title="Case Studies"></div>
   <div class="dot" data-index="6" title="Why Us"></div>
   <div class="dot" data-index="7" title="Strategy"></div>
-  <div class="dot" data-index="8" title="Pricing"></div>
   <div class="dot" data-index="9" title="CTA"></div>
 </nav>
 
@@ -1389,64 +1292,6 @@
     </div>
   </div>
 </section>
-
-
-<!-- ────────────────────────────────────────── -->
-<!-- SLIDE 9: PRICING -->
-<!-- ────────────────────────────────────────── -->
-<section class="slide grid-bg" id="s9">
-  <p class="section-label reveal">09 — Investment</p>
-  <h2 class="price-heading reveal">Transparent<br>Pricing.</h2>
-  <p class="price-sub reveal">No hidden fees, no lock-in surprises. Every plan includes a dedicated strategist, live reporting dashboard, and a commitment to measurable results.</p>
-
-  <div class="price-grid">
-    <div class="price-card reveal">
-      <div class="price-tier">Starter</div>
-      <div class="price-amount">₹35K <span>/ mo</span></div>
-      <div class="price-desc">For early-stage brands building their digital foundation.</div>
-      <ul class="price-features">
-        <li><span class="check">✓</span> 1 ad channel (Meta or Google)</li>
-        <li><span class="check">✓</span> Social media management (3×/wk)</li>
-        <li><span class="check">✓</span> Monthly performance report</li>
-        <li><span class="check">✓</span> 4 creative assets/month</li>
-        <li><span class="check">✓</span> Dedicated account manager</li>
-      </ul>
-    </div>
-
-    <div class="price-card featured reveal" style="transition-delay:0.1s">
-      <div class="featured-badge">Most Popular</div>
-      <div class="price-tier">Growth</div>
-      <div class="price-amount">₹75K <span>/ mo</span></div>
-      <div class="price-desc">For brands ready to scale performance and build a dominant presence.</div>
-      <ul class="price-features">
-        <li><span class="check">✓</span> Meta + Google Ads</li>
-        <li><span class="check">✓</span> Social media (5×/wk + stories)</li>
-        <li><span class="check">✓</span> SEO (on-page + content)</li>
-        <li><span class="check">✓</span> Weekly optimisation calls</li>
-        <li><span class="check">✓</span> Live analytics dashboard</li>
-        <li><span class="check">✓</span> 10 creative assets/month</li>
-        <li><span class="check">✓</span> Email/WhatsApp sequence</li>
-      </ul>
-    </div>
-
-    <div class="price-card reveal" style="transition-delay:0.2s">
-      <div class="price-tier">Performance</div>
-      <div class="price-amount">Custom</div>
-      <div class="price-desc">For high-growth brands that need a full-service marketing partner.</div>
-      <ul class="price-features">
-        <li><span class="check">✓</span> Everything in Growth</li>
-        <li><span class="check">✓</span> Landing page builds</li>
-        <li><span class="check">✓</span> Influencer strategy</li>
-        <li><span class="check">✓</span> Full content production</li>
-        <li><span class="check">✓</span> Bi-weekly strategy sessions</li>
-        <li><span class="check">✓</span> Priority response (< 4 hrs)</li>
-        <li><span class="check">✓</span> Custom reporting & QBRs</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-
 <!-- ────────────────────────────────────────── -->
 <!-- SLIDE 10: CTA -->
 <!-- ────────────────────────────────────────── -->
